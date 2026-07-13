@@ -26,8 +26,8 @@ export default function LoadingScreen({ onComplete }) {
   return (
     <motion.div
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
       className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-darkBg text-white select-none"
     >
       {/* Background radial glow */}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -53,42 +53,45 @@ export default function App() {
         theme="dark"
       />
 
-      {/* Pre-loader */}
+      {/* Pre-loader and Main Content transition */}
       <AnimatePresence mode="wait">
-        {isLoading && (
-          <LoadingScreen onComplete={() => setIsLoading(false)} />
+        {isLoading ? (
+          <LoadingScreen key="loader" onComplete={() => setIsLoading(false)} />
+        ) : (
+          <motion.div
+            key="content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="relative min-h-screen bg-darkBg text-textPrimary selection:bg-brandBlue/30 selection:text-white"
+          >
+            
+            {/* Global UI helpers */}
+            <MouseGlow />
+            <ScrollToTop />
+            <Navbar />
+
+            {/* Sections */}
+            <main>
+              <Hero />
+              <About />
+              <Expertise />
+              <Industries />
+              <GlobalHiring />
+              <Process />
+              <WhyWorkWithMe />
+              <Skills />
+              <Results />
+              <Services />
+              <CtaSection />
+              <Contact />
+            </main>
+
+            {/* Footer */}
+            <Footer />
+          </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Main Website Structure */}
-      {!isLoading && (
-        <div className="relative min-h-screen bg-darkBg text-textPrimary selection:bg-brandBlue/30 selection:text-white">
-          
-          {/* Global UI helpers */}
-          <MouseGlow />
-          <ScrollToTop />
-          <Navbar />
-
-          {/* Sections */}
-          <main>
-            <Hero />
-            <About />
-            <Expertise />
-            <Industries />
-            <GlobalHiring />
-            <Process />
-            <WhyWorkWithMe />
-            <Skills />
-            <Results />
-            <Services />
-            <CtaSection />
-            <Contact />
-          </main>
-
-          {/* Footer */}
-          <Footer />
-        </div>
-      )}
     </>
   );
 }
