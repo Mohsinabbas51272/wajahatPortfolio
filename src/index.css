@@ -3,6 +3,16 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    /* Prevent subpixel rendering issues that cause jank */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: #090d16;
     color: #f8fafc;
@@ -15,14 +25,26 @@
   }
 }
 
-/* Glassmorphism Styles */
+/* ─── Glassmorphism ──────────────────────────────────────────────────── */
+/*
+  KEY FIX: Replace "transition: all" with only the properties that
+  actually change on hover. "all" forces the browser to check every
+  CSS property on every frame → causes jank.
+*/
 .glass-card {
   background: rgba(15, 23, 42, 0.45);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.07);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Only transition compositable properties */
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  /* Promote to its own GPU layer so backdrop-blur doesn't repaint siblings */
+  transform: translateZ(0);
+  will-change: background-color, border-color, box-shadow;
 }
 
 .glass-card:hover {
@@ -32,54 +54,44 @@
 }
 
 .glass-navbar {
-  background: rgba(9, 13, 22, 0.75);
+  background: rgba(9, 13, 22, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transform: translateZ(0);
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #090d16;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #3b82f6;
-}
-
-/* Timeline Custom Styles */
-.timeline-line {
-  background: linear-gradient(to bottom, #3b82f6, #8b5cf6, #06b6d4);
-}
-
+/* ─── Background Blobs ───────────────────────────────────────────────── */
+/*
+  Blobs only animate opacity. filter:blur is applied once at paint time.
+  will-change:opacity tells the browser to keep these on a separate layer.
+*/
 .glow-blob {
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
   z-index: 0;
   pointer-events: none;
+  transform: translateZ(0);
   will-change: opacity;
 }
 
-/* Hide scrollbar utility for horizontal scrolling lists */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+/* ─── Timeline ───────────────────────────────────────────────────────── */
+.timeline-line {
+  background: linear-gradient(to bottom, #3b82f6, #8b5cf6, #06b6d4);
 }
 
-/* Gradient text */
+/* ─── Scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #090d16; }
+::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+
+/* ─── No-scrollbar util ──────────────────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── Gradient text ──────────────────────────────────────────────────── */
 .text-gradient {
   background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #22d3ee 100%);
   -webkit-background-clip: text;

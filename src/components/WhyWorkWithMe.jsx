@@ -94,7 +94,7 @@ export default function WhyWorkWithMe() {
             <motion.div
               key={idx}
               variants={itemVariants}
-              whileHover={{ y: -5, borderColor: 'rgba(139, 92, 246, 0.2)' }}
+              whileHover={{ y: -5 }}
               className="glass-card p-6 rounded-2xl border border-white/5 flex items-center gap-4 hover:shadow-lg hover:shadow-brandPurple/5"
             >
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-900/60 border border-white/10">

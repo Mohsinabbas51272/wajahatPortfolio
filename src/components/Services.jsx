@@ -68,8 +68,8 @@ export default function Services() {
             <motion.div
               key={idx}
               variants={itemVariants}
-              whileHover={{ x: 6, borderColor: 'rgba(59, 130, 246, 0.2)' }}
-              className="glass-card p-6 rounded-2xl border border-white/5 flex items-start gap-4"
+              whileHover={{ scale: 1.01 }}
+              className="glass-card p-6 rounded-2xl border border-white/5 flex items-start gap-4 hover:border-brandBlue/20 transition-colors duration-300"
             >
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brandBlue/10 text-brandBlue">
                 <FiCheckSquare size={18} />

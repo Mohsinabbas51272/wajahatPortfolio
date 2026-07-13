@@ -26,7 +26,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ type: 'tween', duration: 0.5, ease: 'easeOut' }}
             >
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-brandBlue/10 text-brandBlue border border-brandBlue/20">
                 <span className="h-1.5 w-1.5 rounded-full bg-accentCyan animate-pulse" />
@@ -37,7 +37,7 @@ export default function Hero() {
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
+              transition={{ type: 'tween', duration: 0.5, ease: 'easeOut', delay: 0.12 }}
               className="mt-6 font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1]"
             >
               Hi, I'm <span className="text-gradient">{personalInfo.name}</span>
@@ -46,7 +46,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ type: 'tween', duration: 0.5, ease: 'easeOut', delay: 0.22 }}
               className="mt-4 text-xl sm:text-2xl font-semibold text-textSecondary h-[40px] flex items-center justify-center lg:justify-start"
             >
               <TypeAnimation
@@ -59,9 +59,9 @@ export default function Hero() {
             </motion.div>
 
             <motion.p
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.45 }}
+              transition={{ type: 'tween', duration: 0.5, ease: 'easeOut', delay: 0.32 }}
               className="mt-6 text-base sm:text-lg text-textSecondary leading-relaxed max-w-xl mx-auto lg:mx-0"
             >
               {personalInfo.bio}
@@ -69,9 +69,9 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              transition={{ type: 'tween', duration: 0.5, ease: 'easeOut', delay: 0.44 }}
               className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
             >
               <Link
@@ -80,7 +80,7 @@ export default function Hero() {
                 smooth={true}
                 offset={-80}
                 duration={500}
-                className="w-full sm:w-auto text-center cursor-pointer rounded-full bg-gradient-to-r from-brandBlue to-brandPurple px-8 py-4 text-sm font-semibold uppercase tracking-wider text-white shadow-lg shadow-brandBlue/20 hover:shadow-brandBlue/40 hover:scale-[1.03] transition-all duration-300"
+                className="w-full sm:w-auto text-center cursor-pointer rounded-full bg-gradient-to-r from-brandBlue to-brandPurple px-8 py-4 text-sm font-semibold uppercase tracking-wider text-white shadow-lg shadow-brandBlue/20 hover:shadow-brandBlue/40 hover:scale-[1.03] transition-transform duration-200"
               >
                 Let's Build Your Team
               </Link>
@@ -144,9 +144,9 @@ export default function Hero() {
               {/* Image Frame with Gradient Border overlay */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-brandBlue/20 via-transparent to-brandPurple/20 pointer-events-none" />
               <img
-                src="/images/recruitment_portrait.png"
-                alt="Wajahat Ali Abbasi Portrait"
-                className="w-full h-full object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-500"
+                src="/images/wajahat_profile.png"
+                alt="Wajahat Ali Abbasi - Recruitment Consultant"
+                className="w-full h-full object-cover object-top rounded-2xl transition-all duration-500"
               />
               
               {/* Small floating badge */}

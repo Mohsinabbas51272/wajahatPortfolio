@@ -16,70 +16,107 @@ export default function Contact() {
     message: ''
   });
 
+  const resetForm = () => {
+    setFormData({
+      user_name: '',
+      company_name: '',
+      user_email: '',
+      hiring_requirement: 'Full-Cycle Recruitment',
+      message: ''
+    });
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  // Send to Google Sheets via Apps Script Web App URL
+  const sendToGoogleSheets = async () => {
+    const scriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
+    if (!scriptUrl) return false;
+
+    try {
+      await fetch(scriptUrl, {
+        method: 'POST',
+        mode: 'no-cors', // Required for Google Apps Script
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.user_name,
+          company: formData.company_name,
+          email: formData.user_email,
+          requirement: formData.hiring_requirement,
+          message: formData.message,
+        }),
+      });
+      return true; // no-cors means we can't read response, assume success
+    } catch (err) {
+      console.error('Google Sheets error:', err);
+      return false;
+    }
+  };
+
+  // Send via EmailJS as secondary channel
+  const sendViaEmailJS = async () => {
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    if (!serviceId || !templateId || !publicKey) return false;
+
+    try {
+      await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
+      return true;
+    } catch (err) {
+      console.error('EmailJS error:', err);
+      return false;
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    // Retrieve environment variables (or fall back to mock sending for demo ease)
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    const hasSheets = !!import.meta.env.VITE_GOOGLE_SCRIPT_URL;
+    const hasEmailJS = !!(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID &&
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID &&
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    );
 
-    if (!serviceId || !templateId || !publicKey) {
-      // Graceful fallback simulation if keys are not set up yet
+    // Demo mode — no keys configured yet
+    if (!hasSheets && !hasEmailJS) {
       setTimeout(() => {
-        toast.success('Hiring request sent successfully! (Demo Mode)', {
-          position: "top-right",
-          autoClose: 4000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          theme: "dark",
+        toast.success('✅ Message received! (Demo Mode — configure keys to go live)', {
+          position: 'top-right', autoClose: 5000, theme: 'dark',
         });
         setLoading(false);
-        setFormData({
-          user_name: '',
-          company_name: '',
-          user_email: '',
-          hiring_requirement: 'Full-Cycle Recruitment',
-          message: ''
-        });
-      }, 1500);
+        resetForm();
+      }, 1200);
       return;
     }
 
-    emailjs.sendForm(serviceId, templateId, formRef.current, publicKey)
-      .then((result) => {
-        toast.success('Hiring request sent! Wajahat will get in touch.', {
-          position: "top-right",
-          autoClose: 4000,
-          theme: "dark"
-        });
-        setFormData({
-          user_name: '',
-          company_name: '',
-          user_email: '',
-          hiring_requirement: 'Full-Cycle Recruitment',
-          message: ''
-        });
-      }, (error) => {
-        console.error(error.text);
-        toast.error('Failed to send email. Please try email or LinkedIn.', {
-          position: "top-right",
-          autoClose: 4000,
-          theme: "dark"
-        });
-      })
-      .finally(() => {
-        setLoading(false);
+    // Fire both channels simultaneously (whichever is configured)
+    const [sheetsOk, emailOk] = await Promise.all([
+      hasSheets  ? sendToGoogleSheets() : Promise.resolve(false),
+      hasEmailJS ? sendViaEmailJS()     : Promise.resolve(false),
+    ]);
+
+    if (sheetsOk || emailOk) {
+      toast.success('🎯 Hiring request submitted! Wajahat will get back within 24 hrs.', {
+        position: 'top-right', autoClose: 5000, theme: 'dark',
       });
+      resetForm();
+    } else {
+      toast.error('❌ Submission failed. Please email directly at glb.talentpartner@gmail.com', {
+        position: 'top-right', autoClose: 6000, theme: 'dark',
+      });
+    }
+
+    setLoading(false);
   };
+
+
+
 
   return (
     <section id="contact" className="relative py-24 overflow-hidden">

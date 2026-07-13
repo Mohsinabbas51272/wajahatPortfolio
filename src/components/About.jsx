@@ -67,7 +67,8 @@ export default function About() {
                 <motion.div
                   key={idx}
                   variants={itemVariants}
-                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                  whileHover={{ y: -6 }}
+                  transition={{ duration: 0.2, ease: 'easeOut' }}
                   className={`glass-card p-6 rounded-2xl border border-white/5 flex flex-col items-start gap-4 ${
                     idx === 4 ? 'sm:col-span-2' : ''
                   }`}
