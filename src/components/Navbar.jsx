@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { personalInfo } from '../data/portfolioData';
+import { scrollToSection } from '../utils/scrollUtils';
 
 const navItems = [
   { label: 'Home', target: 'home' },
@@ -46,12 +46,12 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link
-            to="home"
-            spy={true}
-            smooth={true}
-            offset={-80}
-            duration={500}
+          <a
+            href="#home"
+            onClick={(event) => {
+              event.preventDefault();
+              scrollToSection('home', 110);
+            }}
             className="flex cursor-pointer items-center gap-2 group"
           >
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-brandBlue to-brandPurple text-xl font-bold tracking-wider text-white shadow-md shadow-brandBlue/20 group-hover:scale-105 transition-transform duration-300">
@@ -60,38 +60,37 @@ export default function Navbar() {
             <span className="hidden sm:inline font-display text-lg font-bold tracking-tight text-white group-hover:text-brandBlue transition-colors duration-300">
               Wajahat Ali Abbasi
             </span>
-          </Link>
+          </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
-              <Link
+              <a
                 key={item.target}
-                to={item.target}
-                spy={true}
-                smooth={true}
-                offset={-85}
-                duration={500}
-                activeClass="text-brandBlue font-semibold bg-white/5"
+                href={`#${item.target}`}
+                onClick={(event) => {
+                  event.preventDefault();
+                  scrollToSection(item.target, 110);
+                }}
                 className="cursor-pointer rounded-full px-4 py-2 text-sm font-medium text-textSecondary hover:text-white hover:bg-white/5 transition-all duration-200"
               >
                 {item.label}
-              </Link>
+              </a>
             ))}
           </nav>
 
           {/* Let's Talk CTA button (Desktop) */}
           <div className="hidden lg:block">
-            <Link
-              to="contact"
-              spy={true}
-              smooth={true}
-              offset={-85}
-              duration={500}
+            <a
+              href="#contact"
+              onClick={(event) => {
+                event.preventDefault();
+                scrollToSection('contact', 110);
+              }}
               className="cursor-pointer rounded-full bg-gradient-to-r from-brandBlue to-brandPurple px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white shadow-md shadow-brandBlue/15 hover:shadow-brandBlue/35 hover:scale-[1.03] transition-all duration-300"
             >
               Hire Me
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -118,31 +117,30 @@ export default function Navbar() {
             className="lg:hidden w-full bg-slate-950/95 border-b border-white/5 px-6 py-4 flex flex-col gap-1 overflow-hidden"
           >
             {navItems.map((item) => (
-              <Link
+              <a
                 key={item.target}
-                to={item.target}
-                spy={true}
-                smooth={true}
-                offset={-80}
-                duration={500}
-                onClick={() => setMobileMenuOpen(false)}
-                activeClass="text-brandBlue bg-white/5 font-semibold"
+                href={`#${item.target}`}
+                onClick={(event) => {
+                  event.preventDefault();
+                  setMobileMenuOpen(false);
+                  scrollToSection(item.target, 110);
+                }}
                 className="cursor-pointer rounded-lg px-4 py-3 text-base font-medium text-textSecondary hover:text-white hover:bg-white/5 transition-all duration-200"
               >
                 {item.label}
-              </Link>
+              </a>
             ))}
-            <Link
-              to="contact"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              onClick={() => setMobileMenuOpen(false)}
+            <a
+              href="#contact"
+              onClick={(event) => {
+                event.preventDefault();
+                setMobileMenuOpen(false);
+                scrollToSection('contact', 110);
+              }}
               className="cursor-pointer mt-2 text-center rounded-lg bg-gradient-to-r from-brandBlue to-brandPurple py-3 text-sm font-semibold uppercase tracking-wider text-white shadow-md"
             >
               Let's Talk
-            </Link>
+            </a>
           </motion.div>
         )}
       </AnimatePresence>

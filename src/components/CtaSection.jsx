@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-scroll';
 import { FiCalendar, FiArrowRight } from 'react-icons/fi';
 import { personalInfo } from '../data/portfolioData';
+import { scrollToSection } from '../utils/scrollUtils';
 
 export default function CtaSection() {
   return (
@@ -30,17 +30,14 @@ export default function CtaSection() {
 
           {/* Action buttons */}
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-            <Link
-              to="contact"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              className="w-full sm:w-auto flex items-center justify-center gap-2 cursor-pointer rounded-full bg-gradient-to-r from-brandBlue to-brandPurple px-8 py-4 text-xs sm:text-sm font-semibold uppercase tracking-wider text-white hover:scale-[1.03] transition-all duration-300 shadow-md shadow-brandBlue/10"
+            <button
+              type="button"
+              onClick={() => scrollToSection('contact', 110)}
+              className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brandBlue to-brandPurple px-8 py-4 text-xs sm:text-sm font-semibold uppercase tracking-wider text-white hover:scale-[1.03] transition-all duration-300 shadow-md shadow-brandBlue/10"
             >
               Let's Work Together
               <FiArrowRight size={14} />
-            </Link>
+            </button>
             
             <a
               href={personalInfo.socials.calendly}

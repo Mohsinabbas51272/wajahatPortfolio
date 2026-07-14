@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-scroll';
 import { TypeAnimation } from 'react-type-animation';
 import CountUp from 'react-countup';
 import { FiLinkedin, FiMail, FiDownload } from 'react-icons/fi';
+import { scrollToSection } from '../utils/scrollUtils';
 import { personalInfo, typingTitles } from '../data/portfolioData';
 
 // Generate typing sequence array for react-type-animation
@@ -73,16 +73,13 @@ export default function Hero() {
               transition={{ type: 'tween', duration: 0.5, ease: 'easeOut', delay: 0.44 }}
               className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
             >
-              <Link
-                to="contact"
-                spy={true}
-                smooth={true}
-                offset={-80}
-                duration={500}
-                className="w-full sm:w-auto text-center cursor-pointer rounded-full bg-gradient-to-r from-brandBlue to-brandPurple px-8 py-4 text-sm font-semibold uppercase tracking-wider text-white shadow-lg shadow-brandBlue/20 hover:shadow-brandBlue/40 hover:scale-[1.03] transition-transform duration-200"
+              <button
+                type="button"
+                onClick={() => scrollToSection('contact', 110)}
+                className="w-full sm:w-auto text-center rounded-full bg-gradient-to-r from-brandBlue to-brandPurple px-8 py-4 text-sm font-semibold uppercase tracking-wider text-white shadow-lg shadow-brandBlue/20 hover:shadow-brandBlue/40 hover:scale-[1.03] transition-transform duration-200"
               >
                 Let's Build Your Team
-              </Link>
+              </button>
               
               <a
                 href={personalInfo.resumeUrl}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FiLinkedin, FiMail } from 'react-icons/fi';
-import { Link } from 'react-scroll';
 import { personalInfo } from '../data/portfolioData';
+import { scrollToSection } from '../utils/scrollUtils';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -13,16 +13,13 @@ export default function Footer() {
           
           {/* Logo/Name */}
           <div className="text-center md:text-left">
-            <Link
-              to="home"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
+            <button
+              type="button"
+              onClick={() => scrollToSection('home', 110)}
               className="cursor-pointer font-display text-xl font-bold tracking-tight text-white hover:text-brandBlue transition-colors duration-200"
             >
               {personalInfo.name}
-            </Link>
+            </button>
             <p className="mt-1.5 text-xs text-textSecondary uppercase tracking-widest">
               Recruitment Consultant | Talent Acquisition Specialist
             </p>
@@ -53,36 +50,27 @@ export default function Footer() {
         <div className="mt-8 border-t border-white/5 pt-8 flex flex-col items-center justify-between gap-4 md:flex-row text-center text-xs text-textSecondary">
           <p>© {currentYear} {personalInfo.name}. All Rights Reserved.</p>
           <div className="flex items-center gap-6">
-            <Link
-              to="about"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
+            <button
+              type="button"
+              onClick={() => scrollToSection('about', 110)}
               className="cursor-pointer hover:text-white transition-colors"
             >
               About
-            </Link>
-            <Link
-              to="expertise"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToSection('expertise', 110)}
               className="cursor-pointer hover:text-white transition-colors"
             >
               Expertise
-            </Link>
-            <Link
-              to="contact"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToSection('contact', 110)}
               className="cursor-pointer hover:text-white transition-colors"
             >
               Contact
-            </Link>
+            </button>
           </div>
         </div>
       </div>

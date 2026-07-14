@@ -8,9 +8,8 @@ export default function SectionWrapper({ id, className = '', children }) {
       id={id}
       initial="hidden"
       whileInView="visible"
-      exit="hidden"
       variants={fadeInOut}
-      viewport={{ once: false, margin: '-80px' }}
+      viewport={{ once: true, margin: '-100px', amount: 0.15 }}
       className={className}
     >
       {children}
