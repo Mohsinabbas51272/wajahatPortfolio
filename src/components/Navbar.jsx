@@ -72,7 +72,7 @@ export default function Navbar() {
                   event.preventDefault();
                   scrollToSection(item.target, 110);
                 }}
-                className="cursor-pointer rounded-full px-4 py-2 text-sm font-medium text-textSecondary hover:text-white hover:bg-white/5 transition-all duration-200"
+                className="cursor-pointer rounded-full px-4 py-2 text-sm font-medium text-textSecondary hover:text-white hover:bg-white/5 transition-colors duration-200"
               >
                 {item.label}
               </a>
@@ -87,7 +87,7 @@ export default function Navbar() {
                 event.preventDefault();
                 scrollToSection('contact', 110);
               }}
-              className="cursor-pointer rounded-full bg-gradient-to-r from-brandBlue to-brandPurple px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white shadow-md shadow-brandBlue/15 hover:shadow-brandBlue/35 hover:scale-[1.03] transition-all duration-300"
+              className="cursor-pointer rounded-full bg-gradient-to-r from-brandBlue to-brandPurple px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white shadow-md shadow-brandBlue/15 hover:shadow-brandBlue/35 hover:scale-[1.03] transition-transform duration-300"
             >
               Hire Me
             </a>
@@ -125,7 +125,7 @@ export default function Navbar() {
                   setMobileMenuOpen(false);
                   scrollToSection(item.target, 110);
                 }}
-                className="cursor-pointer rounded-lg px-4 py-3 text-base font-medium text-textSecondary hover:text-white hover:bg-white/5 transition-all duration-200"
+                className="cursor-pointer rounded-lg px-4 py-3 text-base font-medium text-textSecondary hover:text-white hover:bg-white/5 transition-colors duration-200"
               >
                 {item.label}
               </a>

@@ -31,14 +31,14 @@ export default function Footer() {
               href={personalInfo.socials.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-textSecondary hover:border-brandBlue hover:bg-brandBlue/10 hover:text-brandBlue transition-all duration-300"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-textSecondary hover:border-brandBlue hover:bg-brandBlue/10 hover:text-brandBlue transition-colors duration-300"
               aria-label="LinkedIn Profile"
             >
               <FiLinkedin size={18} />
             </a>
             <a
               href={personalInfo.socials.email}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-textSecondary hover:border-brandBlue hover:bg-brandBlue/10 hover:text-brandBlue transition-all duration-300"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-textSecondary hover:border-brandBlue hover:bg-brandBlue/10 hover:text-brandBlue transition-colors duration-300"
               aria-label="Email Address"
             >
               <FiMail size={18} />

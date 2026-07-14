@@ -99,7 +99,7 @@ export default function Industries() {
                   {industry.roles.map((role, roleIdx) => (
                     <span
                       key={roleIdx}
-                      className="px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-900/60 text-slate-350 border border-white/5 hover:border-brandBlue/35 hover:text-white transition-all duration-200"
+                      className="px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-900/60 text-slate-350 border border-white/5 hover:border-brandBlue/35 hover:text-white transition-colors duration-200"
                     >
                       {role}
                     </span>

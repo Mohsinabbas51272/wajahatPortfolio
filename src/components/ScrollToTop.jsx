@@ -30,7 +30,7 @@ export default function ScrollToTop() {
           whileTap={{ scale: 0.9 }}
           onClick={() => scrollToSection('home', 0)}
           aria-label="Scroll to top"
-          className="fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-brandBlue text-white shadow-lg shadow-brandBlue/25 hover:bg-brandPurple hover:shadow-brandPurple/25 transition-colors duration-300 border border-white/10 backdrop-blur-md"
+          className="fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-brandBlue text-white shadow-lg shadow-brandBlue/25 hover:bg-brandPurple hover:shadow-brandPurple/25 transition-colors duration-300 border border-white/10"
         >
           <FiArrowUp size={22} />
         </motion.button>

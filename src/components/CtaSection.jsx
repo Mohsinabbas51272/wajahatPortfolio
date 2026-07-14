@@ -33,7 +33,7 @@ export default function CtaSection() {
             <button
               type="button"
               onClick={() => scrollToSection('contact', 110)}
-              className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brandBlue to-brandPurple px-8 py-4 text-xs sm:text-sm font-semibold uppercase tracking-wider text-white hover:scale-[1.03] transition-all duration-300 shadow-md shadow-brandBlue/10"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brandBlue to-brandPurple px-8 py-4 text-xs sm:text-sm font-semibold uppercase tracking-wider text-white hover:scale-[1.03] transition-transform duration-300 shadow-md shadow-brandBlue/10"
             >
               Let's Work Together
               <FiArrowRight size={14} />
@@ -43,7 +43,7 @@ export default function CtaSection() {
               href={personalInfo.socials.calendly}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-4 text-xs sm:text-sm font-semibold uppercase tracking-wider text-white hover:border-accentCyan hover:bg-accentCyan/10 transition-all duration-300"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-4 text-xs sm:text-sm font-semibold uppercase tracking-wider text-white hover:border-accentCyan hover:bg-accentCyan/10 transition-colors duration-300"
             >
               <FiCalendar size={14} />
               Schedule Meeting

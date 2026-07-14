@@ -14,8 +14,8 @@ export default function Hero() {
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
       
       {/* Floating gradient background blobs */}
-      <div className="glow-blob w-[45vw] h-[45vw] bg-brandBlue/10 top-[-10%] left-[-10%] animate-gradient-pulse" />
-      <div className="glow-blob w-[35vw] h-[35vw] bg-brandPurple/10 bottom-[10%] right-[-10%] animate-gradient-pulse" style={{ animationDelay: '-4s' }} />
+      <div className="glow-blob w-[45vw] h-[45vw] bg-brandBlue/10 top-[-10%] left-[-10%]" />
+      <div className="glow-blob w-[35vw] h-[35vw] bg-brandPurple/10 bottom-[10%] right-[-10%]" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -84,7 +84,7 @@ export default function Hero() {
               <a
                 href={personalInfo.resumeUrl}
                 download
-                className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-4 text-sm font-semibold uppercase tracking-wider text-white hover:border-brandPurple hover:bg-brandPurple/10 transition-all duration-300"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-4 text-sm font-semibold uppercase tracking-wider text-white hover:border-brandPurple hover:bg-brandPurple/10 transition-colors duration-300"
               >
                 <FiDownload size={16} />
                 Download Resume
@@ -104,14 +104,14 @@ export default function Hero() {
                   href={personalInfo.socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-textSecondary hover:border-brandBlue hover:text-brandBlue hover:scale-110 transition-all duration-300"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-textSecondary hover:border-brandBlue hover:text-brandBlue hover:scale-110 transition-colors transition-transform duration-300"
                   aria-label="LinkedIn"
                 >
                   <FiLinkedin size={16} />
                 </a>
                 <a
                   href={personalInfo.socials.email}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-textSecondary hover:border-brandBlue hover:text-brandBlue hover:scale-110 transition-all duration-300"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-textSecondary hover:border-brandBlue hover:text-brandBlue hover:scale-110 transition-colors transition-transform duration-300"
                   aria-label="Email"
                 >
                   <FiMail size={16} />
@@ -127,14 +127,16 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] lg:w-[380px] lg:h-[380px] p-3 rounded-3xl border border-white/10 bg-slate-900/40 backdrop-blur-md shadow-2xl shadow-brandBlue/10 animate-float"
+              className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] lg:w-[380px] lg:h-[380px] p-3 rounded-3xl border border-white/10 bg-slate-900/40 backdrop-blur-sm shadow-2xl shadow-brandBlue/10 animate-float"
             >
               {/* Image Frame with Gradient Border overlay */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-brandBlue/20 via-transparent to-brandPurple/20 pointer-events-none" />
               <img
                 src="/images/wajahat_profile.png"
                 alt="Wajahat Ali Abbasi - Recruitment Consultant"
-                className="w-full h-full object-cover object-top rounded-2xl transition-all duration-500"
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover object-top rounded-2xl"
               />
               
               {/* Small floating badge */}

@@ -56,7 +56,7 @@ export default function GlobalHiring() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Map Column */}
-          <div className="lg:col-span-7 relative h-[250px] sm:h-[400px] w-full rounded-3xl border border-white/5 bg-slate-950/50 backdrop-blur-md overflow-hidden p-6">
+          <div className="lg:col-span-7 relative h-[250px] sm:h-[400px] w-full rounded-3xl border border-white/5 bg-slate-950/50 backdrop-blur-sm overflow-hidden p-6">
             
             {/* World Map SVG Dot Background */}
             <svg
