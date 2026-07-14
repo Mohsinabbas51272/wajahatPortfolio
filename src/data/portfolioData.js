@@ -11,7 +11,6 @@ export const personalInfo = {
     linkedin: "https://www.linkedin.com/in/wajahat-ali-abbasi",
     email: "mailto:glb.talentpartner@gmail.com",
     emailRaw: "glb.talentpartner@gmail.com",
-    whatsapp: "https://wa.me/923335272661", // Dummy or formatted WhatsApp link
     calendly: "https://calendly.com", // Placeholder
   },
   stats: [

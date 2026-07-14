@@ -4,7 +4,6 @@ import { Link } from 'react-scroll';
 import { TypeAnimation } from 'react-type-animation';
 import CountUp from 'react-countup';
 import { FiLinkedin, FiMail, FiDownload } from 'react-icons/fi';
-import { FaWhatsapp } from 'react-icons/fa';
 import { personalInfo, typingTitles } from '../data/portfolioData';
 
 // Generate typing sequence array for react-type-animation
@@ -120,15 +119,7 @@ export default function Hero() {
                 >
                   <FiMail size={16} />
                 </a>
-                <a
-                  href={personalInfo.socials.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-textSecondary hover:border-brandBlue hover:text-brandBlue hover:scale-110 transition-all duration-300"
-                  aria-label="WhatsApp"
-                >
-                  <FaWhatsapp size={16} />
-                </a>
+                {/* WhatsApp contact removed per request */}
               </div>
             </motion.div>
           </div>

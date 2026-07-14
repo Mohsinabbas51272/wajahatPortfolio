@@ -1,6 +1,5 @@
 import React from 'react';
 import { FiLinkedin, FiMail } from 'react-icons/fi';
-import { FaWhatsapp } from 'react-icons/fa';
 import { Link } from 'react-scroll';
 import { personalInfo } from '../data/portfolioData';
 
@@ -47,15 +46,7 @@ export default function Footer() {
             >
               <FiMail size={18} />
             </a>
-            <a
-              href={personalInfo.socials.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-textSecondary hover:border-brandBlue hover:bg-brandBlue/10 hover:text-brandBlue transition-all duration-300"
-              aria-label="WhatsApp Chat"
-            >
-              <FaWhatsapp size={18} />
-            </a>
+            {/* WhatsApp contact removed */}
           </div>
         </div>
 

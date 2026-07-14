@@ -21,6 +21,7 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import MouseGlow from './components/MouseGlow';
 import LoadingScreen from './components/LoadingScreen';
+import SectionWrapper from './components/SectionWrapper';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -73,18 +74,53 @@ export default function App() {
 
             {/* Sections */}
             <main>
-              <Hero />
-              <About />
-              <Expertise />
-              <Industries />
-              <GlobalHiring />
-              <Process />
-              <WhyWorkWithMe />
-              <Skills />
-              <Results />
-              <Services />
-              <CtaSection />
-              <Contact />
+              <SectionWrapper id="home" className="pt-24 pb-16">
+                <Hero />
+              </SectionWrapper>
+
+              <SectionWrapper id="about">
+                <About />
+              </SectionWrapper>
+
+              <SectionWrapper id="expertise">
+                <Expertise />
+              </SectionWrapper>
+
+              <SectionWrapper id="industries">
+                <Industries />
+              </SectionWrapper>
+
+              <SectionWrapper id="global-hiring">
+                <GlobalHiring />
+              </SectionWrapper>
+
+              <SectionWrapper id="process">
+                <Process />
+              </SectionWrapper>
+
+              <SectionWrapper id="why-work">
+                <WhyWorkWithMe />
+              </SectionWrapper>
+
+              <SectionWrapper id="skills">
+                <Skills />
+              </SectionWrapper>
+
+              <SectionWrapper id="results">
+                <Results />
+              </SectionWrapper>
+
+              <SectionWrapper id="services">
+                <Services />
+              </SectionWrapper>
+
+              <SectionWrapper id="cta">
+                <CtaSection />
+              </SectionWrapper>
+
+              <SectionWrapper id="contact">
+                <Contact />
+              </SectionWrapper>
             </main>
 
             {/* Footer */}

@@ -23,6 +23,16 @@ export const fadeIn = {
   },
 };
 
+/** Fade in + out variant for sections (supports exit) */
+export const fadeInOut = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { type: 'tween', duration: 0.6, ease: 'easeOut' },
+  },
+  exit: { opacity: 0, transition: { type: 'tween', duration: 0.45, ease: 'easeOut' } },
+};
+
 export const fadeLeft = {
   hidden: { opacity: 0, x: -28 },
   visible: {
